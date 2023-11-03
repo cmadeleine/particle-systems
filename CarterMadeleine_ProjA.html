@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CarterMadeleine_ProjA</title>
+	<style>
+
+		body {
+        overflow: hidden; /* Hide scrollbars */
+      	} 
+      
+
+		.box {
+        display: grid;
+        grid-template-columns: 20% 20%;
+		justify-content: center;
+        column-gap: 3vw;
+      	}
+
+	</style>
+  </head>
+	<!--	Create the HTML5 'canvas' element in which we will run WebGL
+	-->
+  <body onload="main()" onresize="drawResize()">
+    <canvas id="webgl" width="500" height="500">
+    	Please use a browser that supports "canvas"
+    </canvas> 
+	<p>
+	<b>Particle System Controls:</b> 
+  <br>
+  <b>Space-bar:</b> single-step.    
+  <b>P:</b> pause/resume. 
+  <b>Z:</b> switch solver. 
+  &emsp;&emsp;
+  <b>W:</b> forward.
+  <b>A:</b> left strafe.
+  <b>S:</b> backward.
+  <b>D:</b> right strafe.
+  &emsp;&emsp;
+  <b>Arrow keys:</b> angle up, down, left, right.
+</p>
+
+<p>
+	<div id='KeyControls'></div>
+	<div id='KeyDown'></div>
+	<div id='KeyMod'></div>
+	<div id='MouseResult0'></div> 
+	<div id='MouseResult1'></div>
+</p>
+
+  <div class="box">
+
+	<div>
+		<p style="margin:2%" id="springLen">Spring Length: 0.2</p>
+		<input type="range" min="0.001" max="1" value="0.2" step="0.001" class="slider" id="springLen_slider">
+		<p style="margin:2%" id="springDamp">Spring Dampening: 1</p>
+		<input type="range" min="0.1" max="3" value="1" step="0.1" class="slider" id="springDamp_slider">
+	</div>
+
+	<div>
+		<p style="margin:2%" id="boidCenter">Boid Center: (0.0, 0.0, 0.0)</p>
+		x: -2.0 <input type="range" min="-2.0" max="2.0" value="0.0" step="0.01" class="slider" id="x_slider"> 2.0
+		<br>
+		y: -2.0 <input type="range" min="-2.0" max="2.0" value="0.0" step="0.01" class="slider" id="y_slider"> 2.0
+		<br>
+		z: 0.0 <input type="range" min="0.0" max="3.0" value="0.0" step="0.01" class="slider" id="z_slider"> 3.0
+	</div>
+
+  </div>
+
+	
+	<!--	Load in the JavaScript libraries supplied by our textbook 
+			(Matsuda et al., 2013 WebGL Programming Guide) that help us
+			with WebGL programming:
+	-->
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+	<!-- We modified the library cuon-matrix.js from the book 
+		"WebGL Programming Guide"(K. Matsuda, 2013),
+		to add matrix-stack and quaternion capabilities, 
+		and renamed it cuon-matrix-quat.js -->
+    <script src="lib/cuon-matrix-quat03.js"></script> 
+	<!--	Finally, load in our own JavaScript program files:
+	-->
+		<script src="CForcer02.js"></script>
+		<script src="CLimit02.js"></script>
+		<script src="PartSys06.js"></script>
+    <script src="CarterMadeleine_ProjA.js"></script>
+  </body>
+</html>
